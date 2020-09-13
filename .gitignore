@@ -1,0 +1,4 @@
+# gitignore for walkers repository
+
+# vscode dev stuff
+**/.vscode/*
