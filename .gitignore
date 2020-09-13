@@ -2,3 +2,6 @@
 
 # vscode dev stuff
 **/.vscode/*
+
+# python byte code
+**/__pycache__/*
