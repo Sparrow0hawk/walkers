@@ -8,3 +8,5 @@
 
 # setuptools
 **/Walkers.egg-info/*
+**/build/*
+**/dist/*
