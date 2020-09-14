@@ -5,3 +5,6 @@
 
 # python byte code
 **/__pycache__/*
+
+# setuptools
+**/Walkers.egg-info/*
