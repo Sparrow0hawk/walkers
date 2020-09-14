@@ -33,6 +33,12 @@ jobs:
       shell: bash -l {0}
       run: |
         pip install pytest-cov
+
+    - name: install package
+      shell: bash -l {0}
+      run: |
+        python setup.py install
+        
     # run pytest within conda environment
     - name: Run pytest and generate coverage report
       shell: bash -l {0}
