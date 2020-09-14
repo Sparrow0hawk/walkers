@@ -22,3 +22,5 @@ class testAgentClass(unittest.TestCase):
 
         self.assertEqual(self.test_agent1.get_position(), (10,10))
 
+if __name__ == '__main__':
+    unittest.main()

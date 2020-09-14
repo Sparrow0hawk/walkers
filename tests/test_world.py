@@ -22,3 +22,6 @@ class testWorldClass(unittest.TestCase):
         world_set = set([World(coords = (10,10)).get_name() for _ in range(1000)])
 
         self.assertEqual(len(world_set), 1000)
+
+if __name__ == '__main__':
+    unittest.main()
