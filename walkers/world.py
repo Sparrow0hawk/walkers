@@ -1,5 +1,6 @@
 import itertools
-
+import numpy as np
+from walkers.agent import Agent
 class World:
 
     new_name = itertools.count()
@@ -24,6 +25,36 @@ class Population:
 
     def __init__(self):
         self.population = []
+
+    def spawn(self, xlimit, ylimit):
+        """**spawn function**
+
+        This function takes the xlimit and ylimit of the world instance and adds one Agent 
+        into the world at a randomly seeded location that is not already occupied by an agent.
+
+        :param xlimit: the maximum value for the x-axis of the bounded world
+        :type xlimit: int
+        :param ylimit: the maximum value for the y-axis of the bounded world
+        :type ylimit: int
+        :return: None
+        """
+
+        start_x = np.random.choice(range(0, xlimit))
+
+        start_y = np.random.choice(range(0, ylimit))
+        try:
+
+            if (start_x, start_y) not in set([member.get_position() for member in self.population]):
+                self.population.append(Agent(origin=(start_x, start_y)))
+                return None
+
+            else:
+                self.spawn(xlimit, ylimit)
+
+        except RecursionError as e:
+            raise Exception("Can't spawn more Agents as world is full!") from e
+
+
 
 
 

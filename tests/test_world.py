@@ -1,4 +1,5 @@
-import unittest 
+import unittest
+from walkers.agent import Agent 
 from walkers.world import World, Population
 
 class testWorldClass(unittest.TestCase):
@@ -23,6 +24,7 @@ class testWorldClass(unittest.TestCase):
 
         self.assertEqual(len(world_set), 1000)
 
+# do we need a reset function? to clear class attributes
 class TestPopulationClass(unittest.TestCase):
 
     @classmethod
@@ -32,6 +34,23 @@ class TestPopulationClass(unittest.TestCase):
     def test_instanstiation(self):
 
         self.assertEqual(len(self.test_pop.population), 0)
+
+    def test_spawn(self):
+
+        self.test_pop.spawn(2,2)
+
+        self.assertEqual(len(self.test_pop.population), 1)
+        self.assertTrue(isinstance(self.test_pop.population[0], Agent))
+
+        self.assertTrue(self.test_pop.population[0].get_position() in \
+            [(0,0), (0,1), (1,0), (1,1)])
+
+    def test_spawn_fail(self):
+
+        with self.assertRaises(Exception) as cm:
+            [self.test_pop.spawn(2,2) for _ in range(5)]
+
+        self.assertTrue("Can't spawn more Agents as world is full!" in str(cm.exception))
 
 if __name__ == '__main__':
     unittest.main()
