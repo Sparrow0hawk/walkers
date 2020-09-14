@@ -57,7 +57,7 @@ class Population:
         try:
 
             if (start_x, start_y) not in set([member.get_position() for member in self.population]):
-                self.population.append(Agent(origin=(start_x, start_y)))
+                self.population.append(Agent(origin=(start_x, start_y), limits=(xlimit,ylimit)))
                 return None
 
             else:
