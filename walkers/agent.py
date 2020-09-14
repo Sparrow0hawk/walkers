@@ -19,6 +19,9 @@ class Agent:
     def get_limits(self):
         return self.walker.limits
 
+    def step(self):
+        return self.walker.step()
+
 class RandomWalk:
 
     def __init__(self, origin : tuple, limits : tuple):
@@ -32,4 +35,10 @@ class RandomWalk:
 
         This function just controls the inner logic for how an agent would step.
         """
+
+        step = np.random.choice(self.step_set, size=len(self.start))
+
+        return step
+
+
     
