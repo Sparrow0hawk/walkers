@@ -28,6 +28,14 @@ class testWorldClass(unittest.TestCase):
 
         self.assertTrue(isinstance(self.test_world.get_population(),list))
 
+    def test_populate(self) -> None:
+
+        self.test_world.populate(5)
+
+        self.assertTrue(len(self.test_world.get_population()), 5)
+
+        self.assertTrue(len(set(self.test_world.get_population())), 5)
+
 # do we need a reset function? to clear class attributes
 class TestPopulationClass(unittest.TestCase):
 

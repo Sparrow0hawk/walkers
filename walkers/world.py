@@ -20,6 +20,18 @@ class World:
     def get_population(self):
         return self.populace.population
 
+    def populate(self, n) -> None:
+        """**populate function**
+
+        This function populates the world object with a given number of Agents. 
+        It calls the spawn function from the Population object a given number of times 
+        using the xlimit and ylimit World attributes.
+
+        :param n: number of agents to populate within world
+        :type n: int
+        """
+        map(self.populace.spawn(self.xlimit, self.ylimit), range(n))
+
 
 class Population:
 
