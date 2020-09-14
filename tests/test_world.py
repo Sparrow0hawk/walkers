@@ -3,7 +3,8 @@ from walkers.world import World
 
 class testWorldClass(unittest.TestCase):
 
-    def setUp(self) -> None:
+    @classmethod
+    def setUpClass(self) -> None:
         
         self.test_world = World(coords = (100,100))
 
