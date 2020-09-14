@@ -24,6 +24,10 @@ class testWorldClass(unittest.TestCase):
 
         self.assertEqual(len(world_set), 1000)
 
+    def test_get_population(self) -> None:
+
+        self.assertTrue(isinstance(self.test_world.get_population(),list))
+
 # do we need a reset function? to clear class attributes
 class TestPopulationClass(unittest.TestCase):
 
