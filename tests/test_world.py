@@ -4,9 +4,9 @@ from walkers.world import World
 class testWorldClass(unittest.TestCase):
 
     @classmethod
-    def setUpClass(self) -> None:
+    def setUpClass(cls) -> None:
         
-        self.test_world = World(coords = (100,100))
+        cls.test_world = World(coords = (100,100))
 
     def test_limits(self) -> None:
 
