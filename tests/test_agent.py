@@ -7,7 +7,7 @@ class testAgentClass(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls) -> None:
-        cls.test_agent1 = Agent(origin = (10,10), limits=(20,20))
+        cls.test_agent1 = Agent(origin = (10,10))
 
 
     def test_get_name(self) -> None:
@@ -16,7 +16,7 @@ class testAgentClass(unittest.TestCase):
 
     def test_get_name_unique(self) -> None:
         
-        agent_set = set([Agent(origin = (0,10), limits=(10,10)).get_name() for _ in range(10000)])
+        agent_set = set([Agent(origin = (0,10)).get_name() for _ in range(10000)])
 
         self.assertEqual(len(agent_set), 10000)
 
@@ -24,22 +24,18 @@ class testAgentClass(unittest.TestCase):
 
         self.assertEqual(self.test_agent1.get_position(), (10,10))
 
-    def test_get_limits(self) -> None:
-
-        self.assertEqual(self.test_agent1.get_limits(), (20,20))
 
 class testRandomWalkClass(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls) -> None:
-        cls.test_rwalk = RandomWalk(origin=(0,1), limits=(5,5))
+        cls.test_rwalk = RandomWalk(origin=(0,1))
 
     def test_instantiation(self):
 
         self.assertEqual(self.test_rwalk.start, (0,1))
         self.assertTrue(isinstance(self.test_rwalk.path, np.ndarray))
         self.assertEqual(self.test_rwalk.step_set, [-1, 0, 1])
-        self.assertEqual(self.test_rwalk.limits, (5,5))
 
     def test_step(self):
         
@@ -48,6 +44,7 @@ class testRandomWalkClass(unittest.TestCase):
         self.assertTrue(isinstance(step_output, np.ndarray))
 
         step_output_tuple = tuple(map(int, step_output))
+        print(step_output_tuple)
 
         self.assertTrue(step_output_tuple in \
             list(itertools.product([-1, 0, 1], repeat=2)))

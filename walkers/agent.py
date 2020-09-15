@@ -5,10 +5,10 @@ class Agent:
 
     new_name = itertools.count()
 
-    def __init__(self, origin : tuple, limits : tuple):
+    def __init__(self, origin : tuple):
         self.name = "agent_" + str(next(self.new_name))
         self.position = origin
-        self.walker = RandomWalk(origin=origin, limits=limits)
+        self.walker = RandomWalk(origin=origin)
 
     def get_name(self):
         return self.name
@@ -16,16 +16,12 @@ class Agent:
     def get_position(self):
         return self.position 
 
-    def get_limits(self):
-        return self.walker.limits
-
     def step(self):
         return self.walker.step()
 
 class RandomWalk:
 
-    def __init__(self, origin : tuple, limits : tuple):
-        self.limits = limits
+    def __init__(self, origin : tuple):
         self.start = origin
         self.path = np.zeros((1, len(origin)))
         self.step_set = [-1, 0, 1]
