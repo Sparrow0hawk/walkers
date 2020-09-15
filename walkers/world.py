@@ -66,6 +66,12 @@ class Population:
         except RecursionError as e:
             raise Exception("Can't spawn more Agents as world is full!") from e
 
+class ToeGuard:
+
+    def __init__(self, population : list, limits : tuple):
+        self.population = population
+        self.xlimit = limits[0]
+        self.ylimit = limits[1]
 
 
 

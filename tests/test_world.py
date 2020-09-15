@@ -1,6 +1,6 @@
 import unittest
 from walkers.agent import Agent 
-from walkers.world import World, Population
+from walkers.world import ToeGuard, World, Population
 
 class testWorldClass(unittest.TestCase):
 
@@ -63,6 +63,28 @@ class TestPopulationClass(unittest.TestCase):
             [self.test_pop.spawn(2,2) for _ in range(5)]
 
         self.assertTrue("Can't spawn more Agents as world is full!" in str(cm.exception))
+
+class TestToeGuardClass(unittest.TestCase):
+
+    @classmethod
+    def setUpClass(cls) -> None:
+
+        cls.ag1 = Agent(origin=(0,1))
+
+        cls.ag2 = Agent(origin=(0,2))
+
+        cls.test_toe = ToeGuard(population=[cls.ag1, cls.ag2], limits=(5,5))
+
+    def test_instanstiation(self):
+
+        self.assertTrue(isinstance(self.test_toe.population[0], Agent))
+
+        self.assertEqual(self.test_toe.xlimit, 5)
+
+        self.assertEqual(self.test_toe.ylimit, 5)
+
+    def test_step(self):
+        return None
 
 if __name__ == '__main__':
     unittest.main()
