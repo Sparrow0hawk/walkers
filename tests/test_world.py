@@ -1,4 +1,5 @@
 import unittest
+import itertools
 from walkers.agent import Agent 
 from walkers.world import ToeGuard, World, Population
 
@@ -84,7 +85,21 @@ class TestToeGuardClass(unittest.TestCase):
         self.assertEqual(self.test_toe.ylimit, 5)
 
     def test_step(self):
-        return None
+
+        self.test_toe.step()
+
+        self.assertEqual(self.ag1.get_path().shape, (2,2))
+
+        self.assertEqual(self.ag2.get_path().shape, (2,2))
+
+    def test_step_len(self):
+
+        ag1_path = self.ag1.get_path()
+
+        test_step_length = tuple(map(int, ag1_path[1] - ag1_path[0]))
+
+        self.assertTrue(test_step_length in \
+            list(itertools.product([-1, 0, 1], 2)))
 
 if __name__ == '__main__':
     unittest.main()
