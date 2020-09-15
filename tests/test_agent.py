@@ -1,4 +1,4 @@
-from itertools import combinations_with_replacement
+import itertools
 import unittest
 import numpy as np
 from walkers.agent import Agent, RandomWalk
@@ -50,7 +50,7 @@ class testRandomWalkClass(unittest.TestCase):
         step_output_tuple = tuple(map(int, step_output))
 
         self.assertTrue(step_output_tuple in \
-            list(combinations_with_replacement([-1, 0, 1], 2)))
+            list(itertools.product([-1, 0, 1], repeat=2)))
 
     @unittest.skip(reason="Moving some of these ideas into World which will handle step consequences")
     def test_step_distance(self):
