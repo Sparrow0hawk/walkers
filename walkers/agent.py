@@ -23,10 +23,10 @@ class RandomWalk:
 
     def __init__(self, origin : tuple):
         self.start = origin
-        self.path = np.zeros((1, len(origin)))
+        self.path = np.asarray(origin).reshape((1,2))
         self.step_set = [-1, 0, 1]
 
-    def step(self) -> None:
+    def step(self):
         """RandomWalk Step function
 
         This function just controls the inner logic for how an agent would step.
@@ -35,6 +35,12 @@ class RandomWalk:
         step = np.random.choice(self.step_set, size=len(self.start))
 
         return step
+
+    def update(self, step):
+
+        np_step = np.asarray(step).reshape((1,2))
+
+        self.path = np.concatenate([self.path, np_step]).cumsum(0)
 
 
     

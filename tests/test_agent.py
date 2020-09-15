@@ -49,6 +49,16 @@ class testRandomWalkClass(unittest.TestCase):
         self.assertTrue(step_output_tuple in \
             list(itertools.product([-1, 0, 1], repeat=2)))
 
+    def test_update(self):
+
+        self.test_rwalk.update(step=(0,1))
+
+        self.assertTrue(isinstance(self.test_rwalk.path, np.ndarray))
+
+        self.assertEqual(len(self.test_rwalk.path), 2)
+
+        self.assertTrue(self.test_rwalk.path[1][1], 2)
+
     @unittest.skip(reason="Moving some of these ideas into World which will handle step consequences")
     def test_step_distance(self):
         """
