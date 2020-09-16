@@ -60,7 +60,6 @@ class testRandomWalkClass(unittest.TestCase):
         self.assertTrue(isinstance(step_output, np.ndarray))
 
         step_output_tuple = tuple(map(int, step_output))
-        print(step_output_tuple)
 
         self.assertTrue(step_output_tuple in \
             list(itertools.product([-1, 0, 1], repeat=2)))
