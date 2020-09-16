@@ -34,9 +34,9 @@ class testWorldClass(unittest.TestCase):
 
         self.test_world.populate(5)
 
-        self.assertTrue(len(self.test_world.get_population()), 5)
+        self.assertEqual(len(self.test_world.get_population()), 5)
 
-        self.assertTrue(len(set(self.test_world.get_population())), 5)
+        self.assertEqual(len(set(self.test_world.get_population())), 5)
 
 # do we need a reset function? to clear class attributes
 class TestPopulationClass(unittest.TestCase):
