@@ -25,6 +25,9 @@ class Agent:
     def update(self, step):
         return self.walker.update(step)
 
+    def get_journey(self):
+        return self.walker.path.cumsum(0)
+
 
 class RandomWalk:
 
@@ -52,6 +55,7 @@ class RandomWalk:
         np_step = np.asarray(step).reshape((1,2))
 
         self.path = np.concatenate([self.path, np_step])
+
 
 
     
