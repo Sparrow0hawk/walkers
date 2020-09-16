@@ -99,7 +99,7 @@ class TestToeGuardClass(unittest.TestCase):
         test_step_length = tuple(map(int, ag1_path[1] - ag1_path[0]))
 
         self.assertTrue(test_step_length in \
-            list(itertools.product([-1, 0, 1], 2)))
+            list(itertools.product([-1, 0, 1], repeat=2)))
 
 if __name__ == '__main__':
     unittest.main()
