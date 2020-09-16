@@ -73,7 +73,26 @@ class ToeGuard:
         self.xlimit = limits[0]
         self.ylimit = limits[1]
 
+    def step(self):
 
+        for agent in self.population:
 
+            current_agent_pos = [agent.get_journey()[-1] for agent in self.population]
 
+            step_val = agent.step().reshape((1,2))
+
+            expected_dest = np.concatenate([agent.get_path(), step_val]).cumsum(0)[-1]
+
+            while any(np.array_equal(expected_dest, pos) for pos in current_agent_pos) \
+                or expected_dest.max() >= self.xlimit or expected_dest.max() >= self.ylimit \
+                or expected_dest.min() <= -1:
+
+                step_val = agent.step().reshape((1,2))
+
+                expected_dest = np.concatenate([agent.get_path(), step_val]).cumsum(0)[-1]
+                
+            agent.update(step = step_val)
+        
+        return None
+    
     
