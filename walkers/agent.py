@@ -51,7 +51,7 @@ class RandomWalk:
 
         np_step = np.asarray(step).reshape((1,2))
 
-        self.path = np.concatenate([self.path, np_step]).cumsum(0)
+        self.path = np.concatenate([self.path, np_step])
 
 
     

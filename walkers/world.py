@@ -81,19 +81,7 @@ class ToeGuard:
 
             step_val = agent.step().reshape((1,2))
             
-            expected_dest = np.concatenate([agent.get_path(), step_val]).cumsum(0)[-1]
-
-            if any(np.array_equal(expected_dest, pos) for pos in current_agent_pos):
-                self.step()
-
-            elif expected_dest.max() >= self.xlimit or expected_dest.max() >= self.ylimit:
-                self.step()
-
-            elif expected_dest.min() <= -1:
-                step_val = agent.step(step_set=[0,1])
-
-            else:
-                agent.update(step = step_val)
+            agent.update(step = step_val)
         
         return None
     

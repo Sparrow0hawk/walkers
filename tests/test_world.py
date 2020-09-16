@@ -1,5 +1,6 @@
 import unittest
 import itertools
+import numpy as np
 from walkers.agent import Agent 
 from walkers.world import ToeGuard, World, Population
 
@@ -92,14 +93,15 @@ class TestToeGuardClass(unittest.TestCase):
 
         self.assertEqual(self.ag2.get_path().shape, (2,2))
 
-    def test_step_len(self):
+    def test_step_value(self):
 
-        ag1_path = self.ag1.get_path()
+        self.test_toe.step()
 
-        test_step_length = tuple(map(int, ag1_path[1] - ag1_path[0]))
+        flat_list_o_steps = [item for sublist in self.ag1.get_path() for item in sublist]
 
-        self.assertTrue(test_step_length in \
-            list(itertools.product([-1, 0, 1], repeat=2)))
+        self.assertTrue(len(flat_list_o_steps), 6)
+
+        self.assertTrue(np.unique(flat_list_o_steps).tolist(), [-1, 0, 1])
 
 if __name__ == '__main__':
     unittest.main()
