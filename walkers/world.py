@@ -10,6 +10,7 @@ class World:
         self.xlimit = coords[0]
         self.ylimit = coords[1]
         self.populace = Population()
+        self.stepper = ToeGuard(population=self.populace.population, limits=(self.xlimit, self.ylimit))
 
     def get_limits(self):
         return (self.xlimit, self.ylimit)
@@ -32,6 +33,9 @@ class World:
         """
         for _ in range(n):
             self.populace.spawn(self.xlimit, self.ylimit)
+
+    def step(self):
+        return self.stepper.step()
 
 
 class Population:
