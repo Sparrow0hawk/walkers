@@ -103,5 +103,23 @@ class TestToeGuardClass(unittest.TestCase):
 
         self.assertTrue(np.unique(flat_list_o_steps).tolist(), [-1, 0, 1])
 
+    def test_step_limits(self):
+
+        for _ in range(10000):
+            self.test_toe.step()
+
+        flat_list_o_steps = [item for sublist in self.ag1.get_journey() for item in sublist]
+
+        self.assertFalse(-1 in flat_list_o_steps)
+
+        self.assertFalse(5 in flat_list_o_steps)
+
+
+    def test_step_noShared(self):
+
+        self.assertEqual(self.ag1.get_journey().shape, (10002,2))
+
+        self.assertFalse(np.any(np.all(self.ag1.get_journey() == self.ag2.get_journey(), axis=1)))
+
 if __name__ == '__main__':
     unittest.main()

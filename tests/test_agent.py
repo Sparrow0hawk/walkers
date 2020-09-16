@@ -74,38 +74,5 @@ class testRandomWalkClass(unittest.TestCase):
 
         self.assertTrue(self.test_rwalk.path[1][1], 2)
 
-
-    @unittest.skip(reason="Moving some of these ideas into World which will handle step consequences")
-    def test_step_distance(self):
-        """
-        Tests for stepping:
-        - step is only within expected range (either -1, 0 or 1)
-        - cannot step outside world limits
-        - cannot step on existing agent
-        """
-
-        self.assertEqual(self.test_rwalk.path.shape, (2,2))
-
-        test_step_length = tuple(map(int, self.test_rwalk.path[1] - self.test_rwalk[0]))
-
-        self.assertTrue(test_step_length in \
-            list(combinations_with_replacement([-1, 0, 1], 2)))
-
-    @unittest.skip(reason="Skipped as looking to implement not within RW.step")
-    def test_step_limits(self):
-
-        [self.test_rwalk.step() for _ in range(10000)]
-
-        flat_list_o_steps = [item for sublist in self.test_rwalk.path for item in sublist]
-
-        self.assertFalse(-1 in flat_list_o_steps)
-
-        self.assertFalse(5 in flat_list_o_steps)
-
-    @unittest.skip(reason= "Left for future implementation")
-    def test_dont_stepon(self):
-
-        return None
-
 if __name__ == '__main__':
     unittest.main()
