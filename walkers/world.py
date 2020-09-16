@@ -30,7 +30,8 @@ class World:
         :param n: number of agents to populate within world
         :type n: int
         """
-        map(self.populace.spawn(self.xlimit, self.ylimit), range(n))
+        for _ in range(n):
+            self.populace.spawn(self.xlimit, self.ylimit)
 
 
 class Population:
