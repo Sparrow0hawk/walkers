@@ -1,8 +1,9 @@
-![test-suite](https://github.com/Sparrow0hawk/walkers/workflows/test-suite/badge.svg)
-
+![test-suite](https://github.com/Sparrow0hawk/walkers/workflows/test-suite/badge.svg) 
 [![codecov](https://codecov.io/gh/Sparrow0hawk/walkers/branch/master/graph/badge.svg)](https://codecov.io/gh/Sparrow0hawk/walkers)
 
 # Walkers a Python random walker implementation with GUI
+
+![Hundreds of walkers](https://github.com/Sparrow0hawk/walkers/blob/develop/examples/outputs/hundreds.png)
 
 An object orientated dummy world and agents model. This repository includes tools for creating worlds populated with agents that randomly walk around.
 
@@ -22,3 +23,11 @@ $ python setup.py install
 $ pytest
 
 ```
+
+# Example(s)
+
+You can find an example program using this package in the [examples](https://github.com/Sparrow0hawk/walkers/tree/master/examples) folder including use of matplotlib to visualise outputs.
+
+# TODO
+
+- [ ] Implementing a GUI
