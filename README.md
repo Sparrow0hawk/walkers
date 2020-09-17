@@ -1,5 +1,6 @@
 ![test-suite](https://github.com/Sparrow0hawk/walkers/workflows/test-suite/badge.svg) 
 [![codecov](https://codecov.io/gh/Sparrow0hawk/walkers/branch/master/graph/badge.svg)](https://codecov.io/gh/Sparrow0hawk/walkers)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Sparrow0hawk_walkers&metric=alert_status)](https://sonarcloud.io/dashboard?id=Sparrow0hawk_walkers)
 
 # Walkers a Python random walker implementation with GUI
 
